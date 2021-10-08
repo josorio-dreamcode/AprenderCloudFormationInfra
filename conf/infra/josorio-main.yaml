@@ -6,7 +6,7 @@ Resources:
   APIGateway:
     Type: "AWS::Serverless::Api"
     Properties:
-      Name: "Lambdademo​-josorio-APIGateway"
+      Name: "Lambdademo-josorio-APIGateway"
       StageName: "dev"
       DefinitionBody:
         Fn::Transform:
@@ -16,7 +16,7 @@ Resources:
               Fn::Join:
                 - ""
                 - - "s3://"
-                  - "jcala-s3bucket/api-spec/api-spec-josorio.yaml"
+                  - "jcala-s3bucket/api-spec/josorio-api-spec.yaml"
       Variables:
         ApiGateway: !Ref APIGateway
         region: !Ref AWS::Region
@@ -27,7 +27,7 @@ Resources:
   LambdaIAMRole:
     Type: AWS::IAM::Role
     Properties:
-      RoleName: "lambdademo-josorio-IAMLambdaRole"
+      RoleName: "lambdademo-kcabrera-IAMLambdaRole"
       AssumeRolePolicyDocument:
         Version: '2012-10-17'
         Statement:
@@ -38,7 +38,7 @@ Resources:
             Action:
               - 'sts:AssumeRole'
       Policies:
-        - PolicyName: "lambdademo-josorio-IAMLambdaRole-IAMPolicy"
+        - PolicyName: "lambdademo-kcabrera-IAMLambdaRole-IAMPolicy"
           PolicyDocument:
             Version: '2012-10-17'
             Statement:
@@ -62,7 +62,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       Description: My lambda function get users
-      FunctionName: "lambdademo-josorio-getUsers"
+      FunctionName: "lambdademo-kcabrera-getUsers"
       CodeUri: ../../dist
       Handler: ./lambda_handler.getUsers
       Role: !GetAtt LambdaIAMRole.Arn
