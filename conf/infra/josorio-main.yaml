@@ -27,7 +27,7 @@ Resources:
   LambdaIAMRole:
     Type: AWS::IAM::Role
     Properties:
-      RoleName: "lambdademo-kcabrera-IAMLambdaRole"
+      RoleName: "lambdademo-josorio-IAMLambdaRole"
       AssumeRolePolicyDocument:
         Version: '2012-10-17'
         Statement:
@@ -38,7 +38,7 @@ Resources:
             Action:
               - 'sts:AssumeRole'
       Policies:
-        - PolicyName: "lambdademo-kcabrera-IAMLambdaRole-IAMPolicy"
+        - PolicyName: "lambdademo-josorio-IAMLambdaRole-IAMPolicy"
           PolicyDocument:
             Version: '2012-10-17'
             Statement:
@@ -62,7 +62,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       Description: My lambda function get users
-      FunctionName: "lambdademo-kcabrera-getUsers"
+      FunctionName: "lambdademo-josorio-getUsers"
       CodeUri: ../../dist
       Handler: ./lambda_handler.getUsers
       Role: !GetAtt LambdaIAMRole.Arn
