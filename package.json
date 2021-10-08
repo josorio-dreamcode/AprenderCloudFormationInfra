@@ -9,8 +9,8 @@
     "postbuild": "(cp package.json dist/package.json && cd dist && npm install --only=production)",
     "clean": "rimraf dist",
     "build": "npm run clean && tsc",
-    "pack": "npm run uploadAPISpec && npm run-script build && cd conf/infra && venv/bin/sam package --s3-bucket jcala-s3bucket --s3-prefix package --template-file josorio-main.yaml --output-template-file josorio-main-pack.yaml",
-    "deploy": "venv/bin/sam deploy --template-file conf/infra/josorio-main-pack.yaml --stack-name lambdademo-josorio-stack --region $AWS_REGION --capabilities CAPABILITY_IAM CAPABILITY_AUTO_EXPAND CAPABILITY_NAMED_IAM"
+    "pack": "npm run uploadAPISpec && npm run-script build && cd conf/infra && sam package --s3-bucket jcala-s3bucket --s3-prefix package --template-file josorio-main.yaml --output-template-file josorio-main-pack.yaml",
+    "deploy": "sam deploy --template-file conf/infra/josorio-main-pack.yaml --stack-name lambdademo-josorio-stack --region $AWS_REGION --capabilities CAPABILITY_IAM CAPABILITY_AUTO_EXPAND CAPABILITY_NAMED_IAM"
   },
   "author": "josorio",
   "license": "ISC",
